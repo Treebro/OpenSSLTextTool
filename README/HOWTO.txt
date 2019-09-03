@@ -1,11 +1,11 @@
 tl;dr
-Make sure you have OpenSSL installed ( https://slproweb.com/products/Win32OpenSSL.html ) and have ran the HOWTO\GenerateKeys.bat file 
+Make sure you have OpenSSL installed ( https://slproweb.com/products/Win32OpenSSL.html ) and have ran the HOWTO\ReRollKeys.bat file 
 When initially starting to converse, send them your Local\public_key.pem file, it is safe to do so, post it literally anywhere, it only matters that you keep your Local\private_key.pem safe from literally everyone.  Its yours and only yours.
 Write message into Write.txt, then run translate script, then send partner the below files
 Encrypted\SECRET
 Encrypted\SECRETKEY
 
-When you receive a public_key.pem, put it in the Received\public_key.pem location, just overwrite the last key.  To keep Translate.bat simple and trustworthy, its not very intuitive.
+When you receive a public_key.pem, put it in the Received\public_key.pem location, if needed, overwrite the last key.  To keep Translate.bat simple and trustworthy, its not very intuitive.
 Put both SECRET and SECRETKEY files you get into the Received folder
 Run Translate.bat, open the Read.txt file.
 
