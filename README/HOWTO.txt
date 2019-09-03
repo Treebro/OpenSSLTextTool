@@ -1,0 +1,45 @@
+tl;dr
+Make sure you have OpenSSL installed ( https://slproweb.com/products/Win32OpenSSL.html ) and have ran the HOWTO\GenerateKeys.bat file 
+When initially starting to converse, send them your Local\public_key.pem file, it is safe to do so, post it literally anywhere, it only matters that you keep your Local\private_key.pem safe from literally everyone.  Its yours and only yours.
+Write message into Write.txt, then run translate script, then send partner the below files
+Encrypted\SECRET
+Encrypted\SECRETKEY
+
+When you receive a public_key.pem, put it in the Received\public_key.pem location, just overwrite the last key.  To keep Translate.bat simple and trustworthy, its not very intuitive.
+Put both SECRET and SECRETKEY files you get into the Received folder
+Run Translate.bat, open the Read.txt file.
+
+Something went wrong...
+Q:Its saying it can't find openssl... 
+A:If you're using the 32 bit version, edit Translate.bat and remove "Rem" at the start of line #2. Assuming you just installed it on C:\ at default location.  If you didn't, just change the PATH...
+Q:I unno haven't had to fix anything else
+A:Probably put a SECRET or SECRETKEY in the wrong place lol turn it off and on again.
+
+Not tl;dr
+
+MAKE SURE INTEGRITY OF FILES ARE ACCURATE, REALLY SHOULD BE MANDATORY TO TALK TO SOMEONE THAT HAS ALREADY USED THESE FILES TO GUIDE YOU THROUGH YOUR FIRST TIME
+IF SOMEONE IS ASKING YOU TO HELP WITH THEIR FIRST USE, FIRST STEP SHOULD BE TO GET THEM TO RIGHT CLICK EDIT THE .BAT FILES AND ENSURE THEY MATCH YOURS.
+IF THE NUMBER OF COMMANDS (LINES) OF THE .BAT FILE MATCH, AND THEY START WITH OPENSSL RAND/RSAUTL/ENC ITS ZILLIONS TIMES BETTER THAN NOT CHECKING.
+Anything else on top of that is overkill, at this point you would have to be already compromised by a keylogger or rootkit type.  (Build your own pc out of parts for every message I guess if you're paranoid still)
+
+Disclaimer, this isn't perfect security because like, people make mistakes, private keys can be stolen, just its the best and most isolated method without source compiling OpenSSL itself.  
+Never copy or send a private key file to anyone ever.  Except for like a USB stick with a BackupKeys folder hidden in the floorboards.  It is your only proof of you being you, and when its gone messages are no longer readable. At all.
+To destroy all possibility of anyone reading the messages ever again, assuming you weren't compromised in the moment of reading, destroy your hard drive with the private key on it. 
+This was designed with the intent of using as little, as very little as possible to facilitate encrypted communication. Literally your operating system and a copy of OpenSSL, which again, without source coding from scratch, as bare bones as it gets.
+Should be compatible with any encryption/decryption program that anyone can use as long as the SECRETKEY,SECRET,iteration (-iter 1072161), and AES-256-CBC are used in the same manner.  If you like the possibility of whoever made the program leaking data.
+Even here we're still trusting windows and OpenSSL to not fuck us.  Non-zero chance they are.
+If in the unfortunate event you know your private key is compromised, simply re-run the HOWTO\GenerateKeys.bat to generate a new key.  Then accept that anyone with the old private key and both the SECRET and SECRETKEY files can read them.
+
+If you want to send an encrypted file, quick shitfuck hack of renaming the file from "whateverextension.zip" to "Write.txt", overwriting the one in the folder with this new file, translate.bat, send same SECRET & SECRETKEY file as usual, they just have to rename their "Read.txt" to "whateverextension.zip".  After, delete the write.txt and make a new one.
+
+
+
+
+If you want to get more advanced.
+next todo - Create an alternative single copy/paste for input/output so that data is only on ram and never touches the hard drive. +1 onion layer.
+todo
+- Add variable to select which name of partner you wish to translate, give individual keys to different people. +1 organization.
+- Set up a github repo for this. +1 authenticity check.
+- Set up a perfect forward security script that doesn't suck. +1 sending new public keys every message :(  +1 people can only read one compromised message.
+- User input password on translate. +1 onion layer. +1 less serious if key comprimised.
+- Get a path variable for openssl location instead of, yknow, static garbo.  +1 person that doesn't have trouble figuring this stuff out.
